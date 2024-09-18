@@ -3,7 +3,7 @@ Indexes are used in databases to improve the speed of data retrieval operations.
  clustered and non-clustered.
 
 
-Clustered Index:
+<h2>Clustered Index:</h2>
 
 	
 	Definition: A clustered sorts the rows of the table based on the indexed column(s).
