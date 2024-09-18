@@ -1,1 +1,46 @@
+Indexes are used in databases to improve the speed of data retrieval operations. 
+
+ clustered and non-clustered.
+
+
+Clustered Index:
+
+	
+	Definition: A clustered sorts the rows of the table based on the indexed column(s).
+	
+	Since the data is stored in the order of the clustered index, there can be only one clustered index per table.
+	
+	
+	Performance: Clustered indexes are generally faster for retrieving a range of data because the data is physically stored in sequence.
+	
+	By default, a primary key constraint creates a clustered index unless specified otherwise.
+	
+	Impact on Data Modification: Insert, update, and delete operations can be slower because the database might need to rearrange the data to maintain the order.
+	Example: If you have a table of employees, creating a clustered index on the employee ID would store the data sorted by employee ID.
+	
+	How to know cluster is already created 
+	
+	execute sp_helpindex employee;  
+	
+	Query : 
+	create clustered index index_tablename_column1_column2 ON tablename (salary ASC, Gender DESC)
+	
+
+
+
+Non-Clustered Index:
+ 
+	Definition: A non-clustered index creates a separate structure from the data rows that contains the indexed column and a pointer to the physical data row.
+	
+	Multiple non-clustered indexes can be created on a single table because they do not affect the physical order of the data.
+	
+	Performance: Non-clustered indexes are useful for queries that do not return large result sets. They are faster for lookups and searches that return a small amount of data.
+	
+	Secondary Index: Non-clustered indexes are often used as secondary indexes in addition to the primary key.
+	
+	Impact on Data Modification: These indexes can also slow down data modification operations, but to a lesser extent compared to clustered indexes.
+	
+	Example: In the same employees table, creating a non-clustered index on the employee's last name would allow faster searches for employees by last name, but the physical order of rows would remain unchanged.
+	
+	CREATE NONCLUSTERED INDEX NON_CLUSTERED_ID ON CUSTOMERS (ID, AGE, SALARY);
 
